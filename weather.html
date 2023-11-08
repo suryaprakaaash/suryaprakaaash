@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <style>
+    body {
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-position: center;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    
+    }
+
+    .city-card {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      width: 200px;
+    }
+
+    .city-card h2 {
+      margin: 0;
+      padding: 0;
+      font-size: 24px;
+    }
+
+    .city-card p {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+    }
+
+    .city-card img {
+      width: 50%;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    /* Additional styles for the search bar */
+    #search {
+      margin: 20px;
+      padding: 10px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Weather App</h1>
+    <!-- Search bar -->
+    <input type="text" id="search" placeholder="Search for a city">
+    
+    <div class="city-card" id="madrid">
+      <h2>Madrid</h2>
+      <img src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_3-256.png" alt="Madrid">
+      <p>Temperature: 25°C</p>
+      <p>Description: Sunny</p>
+      <p>Wind: WSW 10 km/h</p>
+    </div>
+
+    <div class="city-card" id="malaga">
+      <h2>Malaga</h2>
+      <img src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_2-64.png" alt="Malaga">
+      <p>Temperature: 28°C</p>
+      <p>Description: Partly cloudy</p>
+      <p>Wind: E 5 km/h</p>
+    </div>
+
+    <div class="city-card" id="barcelona">
+      <h2>Barcelona</h2>
+      <img src="https://cdn3.iconfinder.com/data/icons/nature-emoji/50/Raining-64.png" alt="Barcelona">
+      <p>Temperature: 27°C</p>
+      <p>Description: Rainy</p>
+      <p>Wind: NNW 10 km/h</p>
+    </div>
+  </div>
+
+  <script>
+    const cities = document.querySelectorAll('.city-card');
+
+    document.getElementById('search').addEventListener('input', function(event) {
+      const searchTerm = event.target.value.toLowerCase();
+
+      cities.forEach(city => {
+        const cityName = city.querySelector('h2').innerText.toLowerCase();
+        if (cityName.includes(searchTerm)) {
+          city.style.display = 'block';
+        } else {
+          city.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
